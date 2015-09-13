@@ -9,3 +9,6 @@
 <br>
 <img src="http://i.imgur.com/uuKtTSH.png" alt="Rpi-ultrasonido">
 <br>
+<img src="http://i.imgur.com/B6N9CIC.jpg" alt="Rpi-ultrasonido">
+<br>
+
