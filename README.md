@@ -3,12 +3,12 @@
 <p>Con Interfaz Web</p>
 
 <br>
-<img src="http://i.imgur.com/bFz4qot.png" alt="Rpi-ultrasonido">
+<img src="http://i.imgur.com/bFz4qot.png" alt="Rpi-ultrasonido" width="150px">
 <br>
-<img src="http://i.imgur.com/ZNOsk6L.png" alt="Rpi-ultrasonido">
+<img src="http://i.imgur.com/ZNOsk6L.png" alt="Rpi-ultrasonido" width="150px">
 <br>
-<img src="http://i.imgur.com/uuKtTSH.png" alt="Rpi-ultrasonido">
+<img src="http://i.imgur.com/uuKtTSH.png" alt="Rpi-ultrasonido" width="150px">
 <br>
-<img src="http://i.imgur.com/B6N9CIC.jpg" alt="Rpi-ultrasonido">
+<img src="http://i.imgur.com/B6N9CIC.jpg" alt="Rpi-ultrasonido" width="150px">
 <br>
 
