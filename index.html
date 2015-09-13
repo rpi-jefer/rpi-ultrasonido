@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Ultrasonido</title>
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
+		<script src="js/modernizr.custom.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>		
+	</head>
+	<body>
+
+	<div class="midiendo" id="load-midiendo" style="display:none">
+		<div id="loader-container">
+		  <p id="loadingText">Midiendo...</p>
+		</div>	
+	</div>
+
+	<div id="salida" style="display:none">
+		<h1 class="animated zoomInDown"></h1>
+	</div> 	
+
+	<div class="container animated fadeIn" id="medir">
+		<section id="set-8">
+			<h1>Medir Distancia</h1>
+			<div class="hi-icon-wrap hi-icon-effect-8">
+				<a href="#set-8" class="hi-icon hi-icon-contract" id="click-medir">Medir</a>
+			</div>
+		</section>
+ 	</div>
+
+	<script>
+	$('#click-medir').click(function(){
+		$("#medir").hide('slow');
+		$("#load-midiendo").show('slow');
+		$('#salida').hide('slow');
+	
+		$.ajax({
+			url:'php/medir.php',
+			type:'POST',
+			success: function(response){
+				$('#salida').show('slow');
+				$('#salida h1').text(response);
+				$("#medir").show('slow');
+				$("#load-midiendo").hide('slow');
+				$('#set-8 h1').text('Volver Medir');
+			}
+		});
+
+	});
+	</script>
+
+	</body>
+</html>
