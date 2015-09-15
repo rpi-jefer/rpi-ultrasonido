@@ -13,16 +13,12 @@
 	</head>
 	<body>
 
-	<div class="midiendo" id="load-midiendo" style="display:none">
-		<div id="loader-container">
-		  <p id="loadingText">Midiendo...</p>
-		</div>	
-	</div>
-
+	<!-- Contendor, que muestra la salida (Distancia)  -->
 	<div id="salida" style="display:none">
 		<h1 class="animated zoomInDown"></h1>
 	</div> 	
 
+	<!-- Contendor, que muestra el botón, para medir la distancia  -->
 	<div class="container animated fadeIn" id="medir">
 		<section id="set-8">
 			<h1>Medir Distancia</h1>
@@ -32,25 +28,40 @@
 		</section>
  	</div>
 
-	<script>
-	$('#click-medir').click(function(){
-		$("#medir").hide('slow');
-		$("#load-midiendo").show('slow');
-		$('#salida').hide('slow');
-	
-		$.ajax({
-			url:'php/medir.php',
-			type:'POST',
-			success: function(response){
-				$('#salida').show('slow');
-				$('#salida h1').text(response);
-				$("#medir").show('slow');
-				$("#load-midiendo").hide('slow');
-				$('#set-8 h1').text('Volver Medir');
-			}
-		});
+	<!-- Contendor, que muestra el load (midiendo...)  -->
+	<div class="midiendo" id="load-midiendo" style="display:none">
+		<div id="loader-container">
+		  <p id="loadingText">Midiendo...</p>
+		</div>	
+	</div>
 
-	});
+	<!-- Script, comunicación con el servidor -->
+	<script>
+		// Evento click sobre el boton medir
+		$('#click-medir').click(function(){
+
+
+			$("#medir").hide('slow'); // oculta el boton
+			$("#load-midiendo").show('slow'); // muestra el load (midiendo)
+			$('#salida').hide('slow'); // oculta la salida (si hay algo)
+			
+			// petición ajax al servidor 
+			$.ajax({
+				url:'php/medir.php', // se encarga de ejectura el script python
+				type:'POST', // metodo POST
+
+				// Si todo sale bien
+				success: function(response){
+
+					$('#salida').show('slow'); // muestra la salida (Distancia)
+					$('#salida h1').text(response); // muestra la salida (Distancia)
+					$("#medir").show('slow'); // Muestra el boton medir
+					$("#load-midiendo").hide('slow'); // oculta el load
+					$('#set-8 h1').text('Volver Medir'); // cambia de texto a "Volver a Medir"
+				}
+			}); // fin ajax
+
+		}); // fin click
 	</script>
 
 	</body>
