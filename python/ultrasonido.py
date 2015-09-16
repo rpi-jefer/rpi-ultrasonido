@@ -1,7 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 """"
 Tomado en gran parte de:
 https://electrosome.com/hc-sr04-ultrasonic-sensor-raspberry-pi/
 
+Formula para calcular la distancia
+
+d = V*(t/2) 
+V = velocidad del sonido
+t = tiempo, que tarda la señal de ir del emisor al obstaculo y volver al receptor
 """
 
 
@@ -11,6 +18,7 @@ GPIO.setmode(GPIO.BCM)
 
 TRIG = 23                                  #pin 23 como TRIG
 ECHO = 24                                  #pin 24 como ECHO
+V    = 34300			    			   # Velocidad del sonido 34300cm/s	
 
 print "Medicion de la distancia en curso"
 
@@ -31,14 +39,15 @@ while GPIO.input(ECHO)==0:                 #Comprueba si ECHO está en estado ba
 while GPIO.input(ECHO)==1:                 #Comprueba si ECHO está en estado alto
   pulse_end = time.time()                  #Guarda el tiempo transcurrido, mientras esta en estado alto
 
-pulse_duration = pulse_end - pulse_start   #Se obtienen la duración del pulso, calculando la diferencia entre pulse_start  y pulse_end
+t = pulse_end - pulse_start                #Se obtienen la duración del pulso, calculando la diferencia entre pulse_start  y pulse_end
 
-distance = pulse_duration * 17150          #Se multiplica la duración del pulso, por 17150, para obetener la distancia
-distance = round(distance, 2)              #Se redondea a dos decimales
+distancia = t * (V/2)                      #Se multiplica la duración del pulso, por 17150, para obetener la distancia
+distancia = round(distancia, 2)            #Se redondea a dos decimales
 
-if distance > 2 and distance < 400:        #Comprueba si la distancia está dentro del rango
-  distancia = distance - 0.5;
-  print "Distancia: ",distance - 0.5,"cm"  #Imprime la distancia con 0.5 de calibración
+if distancia > 2 and distancia < 400:      #Comprueba si la distancia está dentro del rango
+
+  print "Distancia: ",distancia,"cm"       #Imprime la distancia 
+
 else:
   print "Fuera de Rango"                   #Imprime fuera de rango
 
